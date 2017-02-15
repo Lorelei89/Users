@@ -22,6 +22,8 @@
 		411640ED1E54B510005D7208 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411640EC1E54B510005D7208 /* User.swift */; };
 		411640F01E54B552005D7208 /* UserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411640EF1E54B552005D7208 /* UserServices.swift */; };
 		411640F31E54BBBE005D7208 /* UsersDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411640F21E54BBBE005D7208 /* UsersDataManager.swift */; };
+		41E9E3C11E54F04200BFD18D /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E9E3C01E54F04200BFD18D /* UserTableViewCell.swift */; };
+		41E9E3C61E54FB7900BFD18D /* UserHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E9E3C51E54FB7900BFD18D /* UserHeaderViewCell.swift */; };
 		8A5B87E9A69AFAF8828EA7E8 /* Pods_UsersRaiffeisen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724E40312507C55C2D1E89B7 /* Pods_UsersRaiffeisen.framework */; };
 		A13572B923C9A81FF6C3135B /* Pods_UsersRaiffeisenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5B5C1195B265E0BCA296E9 /* Pods_UsersRaiffeisenUITests.framework */; };
 		ECE731F1A1528D0AFE40A05F /* Pods_UsersRaiffeisenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC888EBC4FFD8030663504FF /* Pods_UsersRaiffeisenTests.framework */; };
@@ -67,6 +69,8 @@
 		411640EC1E54B510005D7208 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		411640EF1E54B552005D7208 /* UserServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserServices.swift; sourceTree = "<group>"; };
 		411640F21E54BBBE005D7208 /* UsersDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersDataManager.swift; sourceTree = "<group>"; };
+		41E9E3C01E54F04200BFD18D /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		41E9E3C51E54FB7900BFD18D /* UserHeaderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHeaderViewCell.swift; sourceTree = "<group>"; };
 		66718F2270EE573F16569C3C /* Pods-UsersRaiffeisenUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UsersRaiffeisenUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UsersRaiffeisenUITests/Pods-UsersRaiffeisenUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		724E40312507C55C2D1E89B7 /* Pods_UsersRaiffeisen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UsersRaiffeisen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		756E0ECE69DC85F55F685750 /* Pods-UsersRaiffeisen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UsersRaiffeisen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UsersRaiffeisen/Pods-UsersRaiffeisen.debug.xcconfig"; sourceTree = "<group>"; };
@@ -199,6 +203,8 @@
 		411640E31E54B4C2005D7208 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				41E9E3C21E54F95C00BFD18D /* HeaderView */,
+				41E9E3BF1E54F02700BFD18D /* TableViewCell */,
 				411640E41E54B4D4005D7208 /* RoundFullCircleView.swift */,
 				411640EA1E54B4E0005D7208 /* CollectionViewCell */,
 			);
@@ -236,6 +242,22 @@
 				411640F21E54BBBE005D7208 /* UsersDataManager.swift */,
 			);
 			name = DataManager;
+			sourceTree = "<group>";
+		};
+		41E9E3BF1E54F02700BFD18D /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				41E9E3C01E54F04200BFD18D /* UserTableViewCell.swift */,
+			);
+			name = TableViewCell;
+			sourceTree = "<group>";
+		};
+		41E9E3C21E54F95C00BFD18D /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				41E9E3C51E54FB7900BFD18D /* UserHeaderViewCell.swift */,
+			);
+			name = HeaderView;
 			sourceTree = "<group>";
 		};
 		5AE365A47E58B697CED75E84 /* Pods */ = {
@@ -547,7 +569,9 @@
 				411640F01E54B552005D7208 /* UserServices.swift in Sources */,
 				411640B01E54B39C005D7208 /* ViewController.swift in Sources */,
 				411640AE1E54B39C005D7208 /* AppDelegate.swift in Sources */,
+				41E9E3C11E54F04200BFD18D /* UserTableViewCell.swift in Sources */,
 				411640E21E54B496005D7208 /* UserTableViewController.swift in Sources */,
+				41E9E3C61E54FB7900BFD18D /* UserHeaderViewCell.swift in Sources */,
 				411640E81E54B4D4005D7208 /* UserCollectionViewCell.swift in Sources */,
 				411640E71E54B4D4005D7208 /* RoundFullCircleView.swift in Sources */,
 				411640E11E54B496005D7208 /* UsersCollectionViewController.swift in Sources */,

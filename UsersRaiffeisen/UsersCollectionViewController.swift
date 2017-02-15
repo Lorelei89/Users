@@ -28,15 +28,19 @@ class UsersCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Register cell classes
-        self.usersCollectionView.register(UINib.init(nibName: "UserCollectionViewCell", bundle: nil), forCellWithReuseIdentifier:reuseIdentifier )
-        let collectionViewLayout:UICollectionViewFlowLayout = self.usersCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        self.usersCollectionView.setCollectionViewLayout(collectionViewLayout, animated: true)
-        
+        setupCollectionView()
         loadFirstUsers()
         // Do any additional setup after loading the view.
     }
     
+    //MARK: CollectionView Setup
+    
+    func setupCollectionView() {
+        // Register cell classes
+        let collectionViewLayout:UICollectionViewFlowLayout = self.usersCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        self.usersCollectionView.setCollectionViewLayout(collectionViewLayout, animated: true)
+        self.usersCollectionView.register(UINib.init(nibName: "UserCollectionViewCell", bundle: nil), forCellWithReuseIdentifier:reuseIdentifier)
+    }
     
     // MARK: Loading Users from API
     
@@ -74,7 +78,7 @@ class UsersCollectionViewController: UICollectionViewController {
         return self.users.count
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UserCollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! UserCollectionViewCell
     
         // Configure the cell
