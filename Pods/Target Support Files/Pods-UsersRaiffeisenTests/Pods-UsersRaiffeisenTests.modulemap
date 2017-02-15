@@ -1,0 +1,6 @@
+framework module Pods_UsersRaiffeisenTests {
+  umbrella header "Pods-UsersRaiffeisenTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

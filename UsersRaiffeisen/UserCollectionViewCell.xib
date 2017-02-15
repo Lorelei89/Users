@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="userCollectionViewCellIdentifier" id="gTV-IL-0wX" customClass="UserCollectionViewCell" customModule="DemoApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="166" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="166" height="150"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zwE-zg-wzF" customClass="RoundFullCircleView" customModule="DemoApp" customModuleProvider="target">
+                        <rect key="frame" x="43" y="10" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="hba-Nn-F8q"/>
+                            <constraint firstAttribute="width" secondItem="zwE-zg-wzF" secondAttribute="height" multiplier="1:1" id="jhK-RL-mWn"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Sabina Buruiana" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DT-zQ-xGC">
+                        <rect key="frame" x="31" y="100" width="104.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="iOS Developer from Devs" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0HL-lM-Zpc">
+                        <rect key="frame" x="18" y="127" width="131.5" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="3DT-zQ-xGC" firstAttribute="top" secondItem="zwE-zg-wzF" secondAttribute="bottom" constant="10" id="Lan-CX-oHU"/>
+                <constraint firstItem="0HL-lM-Zpc" firstAttribute="top" secondItem="3DT-zQ-xGC" secondAttribute="bottom" constant="10" id="Tns-kM-fP0"/>
+                <constraint firstItem="zwE-zg-wzF" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="h3B-Hx-UmC"/>
+                <constraint firstItem="0HL-lM-Zpc" firstAttribute="centerX" secondItem="zwE-zg-wzF" secondAttribute="centerX" id="jF7-e8-tzJ"/>
+                <constraint firstItem="3DT-zQ-xGC" firstAttribute="centerX" secondItem="zwE-zg-wzF" secondAttribute="centerX" id="nwn-wo-PeZ"/>
+                <constraint firstItem="zwE-zg-wzF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="xDs-Fa-ubx"/>
+            </constraints>
+            <size key="customSize" width="166" height="150"/>
+            <connections>
+                <outlet property="jobLabel" destination="0HL-lM-Zpc" id="GlU-gZ-mrO"/>
+                <outlet property="nameLabel" destination="3DT-zQ-xGC" id="v8W-4k-oz1"/>
+                <outlet property="userPhoto" destination="zwE-zg-wzF" id="UbW-Qh-j4z"/>
+            </connections>
+            <point key="canvasLocation" x="39" y="-30"/>
+        </collectionViewCell>
+    </objects>
+</document>
