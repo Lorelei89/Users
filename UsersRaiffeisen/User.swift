@@ -13,6 +13,28 @@ class UsersWrapper {
     
 }
 
+enum NameFields: String {
+    case Title = "Title"
+    case First = "first"
+    case Last = "last"
+}
+enum LocationFields: String {
+    case Street = "street"
+    case City = "city"
+    case State = "state"
+    case Postcode = "postcode"
+}
+enum LoginFields: String {
+    case Username = "username"
+    case Password = "password"
+}
+enum PictureFields: String {
+    case Large = "large"
+    case Medium = "medium"
+    case Thumbnail = "thumbnail"
+}
+
+
 enum UserFields: String {
     case Gender = "gender"
     case Name = "name"

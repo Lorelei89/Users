@@ -72,7 +72,7 @@
         <scene sceneID="4a4-bE-j38">
             <objects>
                 <collectionViewController id="BsW-Er-NkV" customClass="UsersCollectionViewController" customModule="UsersRaiffeisen" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="Q1C-Yc-i3g">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Q1C-Yc-i3g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -89,6 +89,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="NA0-D5-8fT"/>
+                    <connections>
+                        <outlet property="usersCollectionView" destination="Q1C-Yc-i3g" id="odS-WQ-Vbe"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BnM-D8-RUf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -329,18 +332,18 @@
                             </tableViewSection>
                         </sections>
                         <connections>
-                            <outlet property="dataSource" destination="A4U-Oc-cKD" id="RhS-en-dl7"/>
-                            <outlet property="delegate" destination="A4U-Oc-cKD" id="chj-Rx-b7n"/>
+                            <outlet property="dataSource" destination="A4U-Oc-cKD" id="2CI-gY-JXO"/>
+                            <outlet property="delegate" destination="A4U-Oc-cKD" id="01T-W9-5p3"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="all-Ni-wsF"/>
                     <connections>
-                        <outlet property="userTableView" destination="d3q-Pt-7u6" id="Wkm-Dk-qmB"/>
+                        <outlet property="userTableView" destination="d3q-Pt-7u6" id="NYv-CE-grW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PkX-jm-MkC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="343" y="-119"/>
+            <point key="canvasLocation" x="441" y="-119"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ER2-bD-MO8">

@@ -1,3 +1,4 @@
+
 //
 //  UsersCollectionViewController.swift
 //  DemoApp
@@ -28,7 +29,9 @@ class UsersCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.usersCollectionView.register(UINib.init(nibName: "UserCollectionViewCell", bundle: nil), forCellWithReuseIdentifier:reuseIdentifier )
+        let collectionViewLayout:UICollectionViewFlowLayout = self.usersCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        self.usersCollectionView.setCollectionViewLayout(collectionViewLayout, animated: true)
         
         loadFirstUsers()
         // Do any additional setup after loading the view.
@@ -47,17 +50,17 @@ class UsersCollectionViewController: UICollectionViewController {
                 alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-            self.users = (result.value?.users)!
+            
+            if let users = result.value?.users{
+                self.users = users
+            }
+
             print(self.users)
             self.isLoadingSpecies = false
             self.usersCollectionView?.reloadData()
         })
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     // MARK: - UICollectionViewDataSource
 
@@ -68,26 +71,45 @@ class UsersCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 3
+        return self.users.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! UserCollectionViewCell
     
         // Configure the cell
-//        cell.userPhoto.image = UIImage(named:self.users[indexPath.row].picture[""])
-//        cell.nameLabel.text = viewModel.name(forRowAt: indexPath)
+        cell.userPhoto.image = UIImage(named:self.photo(forRowAt: indexPath))
+        cell.nameLabel.text = self.name(forRowAt: indexPath)
         cell.jobLabel.text = "HR"
         return cell
     }
     
     
-   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UserCollectionViewCell {
-      let userCell = UserCollectionViewCell()
-    
-      return userCell
+    func name(forRowAt indexPath: IndexPath) -> String {
+        guard indexPath.row >= 0 && indexPath.row < self.users.count else {
+            return ""
+        }
+        
+        let firstName = self.users[indexPath.row].name!["first"] as! String
+        let lastName = self.users[indexPath.row].name!["last"] as! String
+        return firstName + lastName
     }
+    
+    func photo(forRowAt indexPath: IndexPath) -> String {
+        guard indexPath.row >= 0 && indexPath.row < self.users.count else {
+            return ""
+        }
+        
+        let photo = self.users[indexPath.row].picture!["medium"] as! String
+        return photo
+    }
+    
+    //MARK: - UICollectionViewDelegate
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+         self.performSegue(withIdentifier: "", sender: indexPath)
+    }
+    
 
     //MARK: - UICollectionViewFlowLayout
     
