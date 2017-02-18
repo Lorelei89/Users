@@ -28,6 +28,8 @@ class UsersCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+   
         setupCollectionView()
         loadFirstUsers()
         // Do any additional setup after loading the view.
@@ -36,10 +38,16 @@ class UsersCollectionViewController: UICollectionViewController {
     //MARK: CollectionView Setup
     
     func setupCollectionView() {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        layout.itemSize = CGSize(width: 120, height: 120)
+        
+        usersCollectionView.dataSource = self
+        usersCollectionView.delegate = self
         // Register cell classes
-        let collectionViewLayout:UICollectionViewFlowLayout = self.usersCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        self.usersCollectionView.setCollectionViewLayout(collectionViewLayout, animated: true)
-        self.usersCollectionView.register(UINib.init(nibName: "UserCollectionViewCell", bundle: nil), forCellWithReuseIdentifier:reuseIdentifier)
+        self.usersCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        self.usersCollectionView.register(UserCollectionViewCell.self, forCellWithReuseIdentifier:reuseIdentifier)
+    
     }
     
     // MARK: Loading Users from API
@@ -69,22 +77,21 @@ class UsersCollectionViewController: UICollectionViewController {
     // MARK: - UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
-
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.users.count
+        return 20
     }
+    
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UserCollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! UserCollectionViewCell
     
         // Configure the cell
-        cell.userPhoto.image = UIImage(named:self.photo(forRowAt: indexPath))
-        cell.nameLabel.text = self.name(forRowAt: indexPath)
-        cell.jobLabel.text = "HR"
+//        cell.userPhoto.image = UIImage(named:self.photo(forRowAt: indexPath))
+       // cell.nameLabel.text = self.name(forRowAt: indexPath)
+     //   cell.jobLabel.text = "HR"
         return cell
     }
     
