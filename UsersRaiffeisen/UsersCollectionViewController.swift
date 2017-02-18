@@ -39,12 +39,10 @@ class UsersCollectionViewController: UICollectionViewController {
     
     func setupCollectionView() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: 120, height: 120)
-        
         usersCollectionView.dataSource = self
         usersCollectionView.delegate = self
         // Register cell classes
+        
         self.usersCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         self.usersCollectionView.register(UserCollectionViewCell.self, forCellWithReuseIdentifier:reuseIdentifier)
     
@@ -90,8 +88,8 @@ class UsersCollectionViewController: UICollectionViewController {
     
         // Configure the cell
 //        cell.userPhoto.image = UIImage(named:self.photo(forRowAt: indexPath))
-       // cell.nameLabel.text = self.name(forRowAt: indexPath)
-     //   cell.jobLabel.text = "HR"
+//        cell.nameLabel.text = self.name(forRowAt: indexPath)
+//        cell.jobLabel.text = "HR"
         return cell
     }
     
@@ -121,34 +119,5 @@ class UsersCollectionViewController: UICollectionViewController {
          self.performSegue(withIdentifier: "", sender: indexPath)
     }
     
-
-    //MARK: - UICollectionViewFlowLayout
-    
-    //Use for size
-    func collectionView(_ collectionView: UICollectionView,
-                                 layout collectionViewLayout: UICollectionViewLayout,
-                                 sizeForItemAt indexPath: IndexPath) -> CGSize{
-        
-        let screenWidth = UIScreen.main.bounds.size.width
-        let twoPicesWith = screenWidth / CGFloat(NUMBER_OF_ITEMS) - CGFloat(NUMBER_OF_SPACES ) * (CGFloat(MINIMUM_INTERIMITEM_SPACE)/CGFloat(NUMBER_OF_ITEMS))
-        let size = CGSize(width: twoPicesWith, height: twoPicesWith)
-        return size
-        
-    }
-    
-    //Use for interspacing
-    func collectionView(_ collectionView: UICollectionView,
-                                 layout collectionViewLayout: UICollectionViewLayout,
-                                 minimumInteritemSpacingForSectionAt section: Int) -> CGFloat{
-       return CGFloat(MINIMUM_INTERIMITEM_SPACE)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                                 layout collectionViewLayout: UICollectionViewLayout,
-                                 minimumLineSpacingForSectionAt section: Int) -> CGFloat{
-
-        
-        return CGFloat(MINIMUM_INTERIMITEM_SPACE)
-    }
 
 }

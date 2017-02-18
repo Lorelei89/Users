@@ -17,6 +17,9 @@ class UserCollectionViewCell: UICollectionViewCell {
       
         super.awakeFromNib()
         // Initialization code
+        
+        layer.cornerRadius = self.frame.height / 6.0
+        layer.masksToBounds = true
     }
 
 }
