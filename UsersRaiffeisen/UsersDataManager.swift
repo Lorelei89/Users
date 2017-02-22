@@ -16,7 +16,7 @@ class UsersDataManager {
         return "https://randomuser.me/api/?page=0&results=100&seed=abc/"
     }
     
-    func getUsers(_ completionHandler: @escaping (Result<UsersWrapper>) -> Void) {
-        UserServices().getUsersAtPath(self.endpointForUsers(), completionHandler: completionHandler)
-    }
+//    func getUsers(_ completionHandler: @escaping (Result<UsersWrapper>) -> Void) {
+//        UserServices().getUsersAtPath(self.endpointForUsers(), completionHandler: completionHandler)
+//    }
 }
