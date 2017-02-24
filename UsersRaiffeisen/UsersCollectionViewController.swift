@@ -156,7 +156,7 @@ class UsersCollectionViewController: UICollectionViewController {
         // Configure the cell
 //                cell.userPhoto.image = UIImage(named:self.photo(forRowAt: indexPath))
 //                cell.nameLabel.text = self.name(forRowAt: indexPath)
-                cell.jobLabel.text = "HR"
+//                cell.jobLabel.text = "HR"
         return cell
     }
 
