@@ -19,34 +19,34 @@ private let NUMBER_OF_SPACES = 3.0
 
 class UsersCollectionViewController: UICollectionViewController {
     
-    var users : [[String:String]]?
+    var users = [[String:AnyObject]]()
     var isLoadingSpecies = false
     var usersWrapper: UsersWrapper? // holds the last wrapper that we've loaded
     var gender: String?
-    var objName:JSON?
-    var objLocation:JSON?
+    var objName = [String:String]()
+    var objLocation = [String:String]()
     var email: String?
-    var objLogin:JSON?
+    var objLogin = [String:String]()
     var phone:String?
-    var objId:JSON?
-    var objPicture:JSON?
+    var objId: [String:String]?
+    var objPicture = [String:String]()
     var nationality:String?
-    var objUser:JSON?
+    var objUser = [String:AnyObject]()
     
     @IBOutlet var usersCollectionView: UICollectionView!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let urlString = "https://randomuser.me/api/?page=0&results=100&seed=abc/"
         if let url = URL(string: urlString) {
             if let data = try? Data(contentsOf: url) {
                 let json = JSON(data: data)
-            
-                    parse(json: json)
-                    return
-    
+                
+                parse(json: json)
+                return
+                
             }
         }
         
@@ -76,7 +76,7 @@ class UsersCollectionViewController: UICollectionViewController {
                 let city = locationDictionary["city"].stringValue
                 let state = locationDictionary["state"].stringValue
                 let postcode = locationDictionary["postcode"].intValue
-                self.objLocation = ["street": street, "city": city, "state": state,"postcode": postcode]
+                self.objLocation = ["street": street, "city": city, "state": state,"postcode": String(postcode)]
             }
             self.email = result[UserFields.Email.rawValue].stringValue
             
@@ -107,12 +107,19 @@ class UsersCollectionViewController: UICollectionViewController {
             
             self.nationality = result[UserFields.Nationality.rawValue].stringValue
             
-            self.objUser = ["gender" : gender ?? nil, "objName" : self.objName ?? nil, "email" : self.email ?? nil, "objLogin " : self.objLogin, "phone" : self.phone ?? nil , "objId " : self.objId ,"objPicture" : self.objPicture ?? nil ,"nationality" : self.nationality ?? nil ]
-           // self.users?.append(self.objUser)
+            self.objUser["gender"] = (gender as AnyObject? )
+            self.objUser["objName"] = self.objName as AnyObject?
+            self.objUser["email"] = self.email as AnyObject?
+            self.objUser["objLogin"] = self.objLogin as AnyObject?
+            self.objUser["phone"] = self.phone as AnyObject?
+            self.objUser["objId"] = self.objId as AnyObject?
+            self.objUser["objPicture"] = self.objPicture as AnyObject?
+            self.objUser["nationality"] = self.nationality as AnyObject?
+            self.users.append(self.objUser as [String : AnyObject])
             
             
         }
-         usersCollectionView.reloadData()
+        usersCollectionView.reloadData()
     }
     
     //MARK: CollectionView Setup
@@ -125,72 +132,66 @@ class UsersCollectionViewController: UICollectionViewController {
         
         self.usersCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         self.usersCollectionView.register(UserCollectionViewCell.self, forCellWithReuseIdentifier:reuseIdentifier)
-    
+        
     }
     
     // MARK: Loading Users from API
     
-
-
+    
+    
     // MARK: - UICollectionViewDataSource
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.users!.count
+        return self.users.count
     }
     
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! UserCollectionViewCell
-    
+        
         // Configure the cell
-//        cell.userPhoto.image = UIImage(named:self.photo(forRowAt: indexPath))
-//        cell.nameLabel.text = self.name(forRowAt: indexPath)
-//        cell.jobLabel.text = "HR"
+//                cell.userPhoto.image = UIImage(named:self.photo(forRowAt: indexPath))
+//                cell.nameLabel.text = self.name(forRowAt: indexPath)
+                cell.jobLabel.text = "HR"
         return cell
     }
-    
-//    func addUsersFromWrapper(_ wrapper: UsersWrapper?) {
-//        self.usersWrapper = wrapper
-//         if self.users == nil {
-//         self.users = self.usersWrapper?.users
-//        }
-//    }
+
     
     func showError() {
         let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
     }
-
+    
     
 //    func name(forRowAt indexPath: IndexPath) -> String {
-//        guard indexPath.row >= 0 && indexPath.row < (self.users?.count)! else {
+//        guard indexPath.row >= 0 && indexPath.row < (self.users.count) else {
 //            return ""
 //        }
-//        
-//        let firstName = self.users?[indexPath.row].name!["first"] as! String
-//        let lastName = self.users?[indexPath.row].name!["last"] as! String
+//
+//        let firstName = self.users[indexPath.row]["first"] as! String
+//        let lastName = self.users[indexPath.row]["last"] as! String
 //        return firstName + lastName
 //    }
-//    
+//
 //    func photo(forRowAt indexPath: IndexPath) -> String {
-//        guard indexPath.row >= 0 && indexPath.row < (self.users?.count)! else {
+//        guard indexPath.row >= 0 && indexPath.row < (self.users.count) else {
 //            return ""
 //        }
-//        
-//        let photo = self.users?[indexPath.row].picture!["medium"] as! String
+//
+//        let photo = self.users[indexPath.row]["medium"] as! String
 //        return photo
 //    }
-    
+
     //MARK: - UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-         self.performSegue(withIdentifier: "", sender: indexPath)
+        self.performSegue(withIdentifier: "", sender: indexPath)
     }
     
-
+    
 }
